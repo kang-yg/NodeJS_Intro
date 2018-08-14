@@ -6,8 +6,19 @@ app.set('views', './views');
 
 app.use(express.static('public'));
 
+app.get('/topic', function(req, res){
+    var topics = ['JavaScript is ...', 'NodeJS is ...', 'Express is ...'];
+    var output = `
+    <a href = "/topic?id=0">JavaScript</a><br>
+    <a href = "/topic?id=1">NodeJS</a><br>
+    <a href = "/topic?id=2">Express</a><br><br>
+    ${topics[req.query.id]}
+    `
+    res.send(output);
+})
+
 app.get('/mina', function(req, res){
-    res.send('Hello Mina, <img src = "/mina01.jpg">')
+    res.send('Hello Mina, <img src = "/mina01.jpg">');
 })
 
 app.get('/template', function(req, res){
